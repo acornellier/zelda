@@ -13,9 +13,4 @@ public class Breakable : MonoBehaviour
     {
         animator.SetTrigger("break");
     }
-
-    void DestroyThisGameObject()
-    {
-        Destroy(gameObject);
-    }
 }

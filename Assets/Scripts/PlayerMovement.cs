@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public enum PlayerState
@@ -17,10 +16,15 @@ public class PlayerMovement : MonoBehaviour
     Vector3 change;
     PlayerState currentState = PlayerState.walk;
 
-    void Start()
+    void Awake()
     {
         animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
+        SceneLinkedSMB<PlayerMovement>.Initialize(animator, this);
     }
 
     void Update()
@@ -28,9 +32,11 @@ public class PlayerMovement : MonoBehaviour
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
+
         if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)
         {
-            StartCoroutine(AttackCo());
+            animator.SetTrigger("attacking");
+            currentState = PlayerState.attack;
         }
     }
 
@@ -57,11 +63,8 @@ public class PlayerMovement : MonoBehaviour
         body.MovePosition(transform.position + speed * Time.deltaTime * change.normalized);
     }
 
-    IEnumerator AttackCo()
+    public void SetStateWalking()
     {
-        animator.SetTrigger("attacking");
-        currentState = PlayerState.attack;
-        yield return new WaitForSeconds(0.3f);
         currentState = PlayerState.walk;
     }
 }
