@@ -1,4 +1,12 @@
+using System.Collections;
 using UnityEngine;
+
+public enum PlayerState
+{
+    walk,
+    attack,
+    interact
+}
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -7,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     Rigidbody2D body;
     Vector3 change;
+    PlayerState currentState = PlayerState.walk;
 
     void Start()
     {
@@ -19,25 +28,43 @@ public class PlayerMovement : MonoBehaviour
         change = Vector3.zero;
         change.x = Input.GetAxisRaw("Horizontal");
         change.y = Input.GetAxisRaw("Vertical");
+        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)
+        {
+            StartCoroutine(AttackCo());
+        }
     }
 
     void FixedUpdate()
     {
-        if (change != Vector3.zero)
+        if (currentState == PlayerState.walk)
         {
-            MoveCharacter();
-            animator.SetFloat("moveX", change.x);
-            animator.SetFloat("moveY", change.y);
-            animator.SetBool("walking", true);
-        }
-        else
-        {
-            animator.SetBool("walking", false);
+            if (change != Vector3.zero)
+            {
+                MoveCharacter();
+                animator.SetFloat("moveX", change.x);
+                animator.SetFloat("moveY", change.y);
+                animator.SetBool("walking", true);
+            }
+            else
+            {
+                animator.SetBool("walking", false);
+            }
         }
     }
 
     void MoveCharacter()
     {
         body.MovePosition(transform.position + speed * Time.deltaTime * change.normalized);
+    }
+
+    IEnumerator AttackCo()
+    {
+        print("AttackCo");
+        animator.SetBool("attacking", true);
+        currentState = PlayerState.attack;
+        yield return null;
+        animator.SetBool("attacking", false);
+        yield return new WaitForSeconds(0.3f);
+        currentState = PlayerState.walk;
     }
 }
