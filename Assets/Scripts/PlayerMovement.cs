@@ -59,11 +59,8 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator AttackCo()
     {
-        print("AttackCo");
-        animator.SetBool("attacking", true);
+        animator.SetTrigger("attacking");
         currentState = PlayerState.attack;
-        yield return null;
-        animator.SetBool("attacking", false);
         yield return new WaitForSeconds(0.3f);
         currentState = PlayerState.walk;
     }
