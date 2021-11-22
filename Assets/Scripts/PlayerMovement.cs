@@ -27,6 +27,11 @@ public class PlayerMovement : MonoBehaviour
         SceneLinkedSMB<PlayerMovement>.Initialize(animator, this);
     }
 
+    void OnEnable()
+    {
+        SceneLinkedSMB<PlayerMovement>.Initialize(animator, this);
+    }
+
     void Update()
     {
         change = Vector3.zero;

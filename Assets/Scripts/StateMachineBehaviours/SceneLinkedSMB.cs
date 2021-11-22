@@ -10,6 +10,7 @@ public class SceneLinkedSMB<TMonoBehaviour> : SealedSMB where TMonoBehaviour : M
 
     public static void Initialize(Animator animator, TMonoBehaviour monoBehaviour)
     {
+        animator.keepAnimatorControllerStateOnDisable = true;
         var sceneLinkedSMBs = animator.GetBehaviours<SceneLinkedSMB<TMonoBehaviour>>();
 
         for (int i = 0; i < sceneLinkedSMBs.Length; i++)
