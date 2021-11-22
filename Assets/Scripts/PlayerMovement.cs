@@ -1,75 +1,61 @@
 using UnityEngine;
+using Animancer;
 
-public enum PlayerState
+enum PlayerState
 {
-    walk,
-    attack,
-    interact
+    walk, attack
 }
 
 public class PlayerMovement : MonoBehaviour
 {
     public float speed;
 
-    Animator animator;
+    [Header("Animations")]
+    public AnimancerComponent animancer;
+    public DirectionalAnimationSet idle;
+    public DirectionalAnimationSet walk;
+    public DirectionalAnimationSet attack;
+
     Rigidbody2D body;
-    Vector3 change;
-    PlayerState currentState = PlayerState.walk;
 
-    void Awake()
+    PlayerState state = PlayerState.walk;
+    Vector2 facing = Vector2.down;
+    Vector2 movement;
+
+    private void Awake()
     {
-        animator = GetComponent<Animator>();
         body = GetComponent<Rigidbody2D>();
-    }
 
-    void Start()
-    {
-        SceneLinkedSMB<PlayerMovement>.Initialize(animator, this);
-    }
-
-    void OnEnable()
-    {
-        SceneLinkedSMB<PlayerMovement>.Initialize(animator, this);
+        Play(idle);
     }
 
     void Update()
     {
-        change = Vector3.zero;
-        change.x = Input.GetAxisRaw("Horizontal");
-        change.y = Input.GetAxisRaw("Vertical");
+        movement = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
 
-        if (Input.GetButtonDown("attack") && currentState != PlayerState.attack)
+        if (Input.GetButtonDown("attack") && state != PlayerState.attack)
         {
-            animator.SetTrigger("attacking");
-            currentState = PlayerState.attack;
+            state = PlayerState.attack;
+        }
+        else if (movement == default)
+        {
+            Play(idle);
+        }
+        else
+        {
+            facing = movement;
+            Play(walk);
         }
     }
 
     void FixedUpdate()
     {
-        if (currentState == PlayerState.walk)
-        {
-            if (change != Vector3.zero)
-            {
-                MoveCharacter();
-                animator.SetFloat("moveX", change.x);
-                animator.SetFloat("moveY", change.y);
-                animator.SetBool("walking", true);
-            }
-            else
-            {
-                animator.SetBool("walking", false);
-            }
-        }
+        body.MovePosition(body.position + speed * Time.deltaTime * movement.normalized);
     }
 
-    void MoveCharacter()
+    private void Play(DirectionalAnimationSet animations)
     {
-        body.MovePosition(transform.position + speed * Time.deltaTime * change.normalized);
-    }
-
-    public void SetStateWalking()
-    {
-        currentState = PlayerState.walk;
+        var clip = animations.GetClip(facing);
+        animancer.Play(clip);
     }
 }

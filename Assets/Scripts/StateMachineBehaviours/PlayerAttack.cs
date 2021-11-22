@@ -8,6 +8,6 @@ public class PlayerAttack : SceneLinkedSMB<PlayerMovement>
         int layerIndex
     )
     {
-        monoBehaviour.SetStateWalking();
+        // monoBehaviour.SetStateWalking();
     }
 }

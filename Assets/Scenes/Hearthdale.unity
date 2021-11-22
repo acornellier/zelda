@@ -27627,8 +27627,9 @@ GameObject:
   - component: {fileID: 751954480}
   - component: {fileID: 751954479}
   - component: {fileID: 751954478}
-  - component: {fileID: 751954477}
+  - component: {fileID: 751954484}
   - component: {fileID: 751954482}
+  - component: {fileID: 751954477}
   - component: {fileID: 751954483}
   m_Layer: 0
   m_Name: Player
@@ -27650,6 +27651,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 4
+  animancer: {fileID: 751954484}
+  idle: {fileID: 11400000, guid: c64cfb3ae06ca43748cf3f967624e6c1, type: 2}
+  walk: {fileID: 11400000, guid: 1b09fd7bebc74474a8b2750dc65b3899, type: 2}
 --- !u!61 &751954478
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27776,7 +27780,7 @@ Animator:
   m_GameObject: {fileID: 751954476}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8ba0889681be04064a64686010c9e771, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -27799,6 +27803,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thrust: 4
   knockTime: 0.4
+--- !u!114 &751954484
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751954476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 751954482}
+  _ActionOnDisable: 0
 --- !u!1 &778823739
 GameObject:
   m_ObjectHideFlags: 0
