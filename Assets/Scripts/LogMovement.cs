@@ -26,7 +26,7 @@ public class LogMovement : MonoBehaviour
 
     void Start()
     {
-        SceneLinkedSMB<LogMovement>.Initialize(animator, this);
+        // SceneLinkedSMB<LogMovement>.Initialize(animator, this);
     }
 
     void Update()

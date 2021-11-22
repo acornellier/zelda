@@ -16,7 +16,8 @@ public class Room : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             virtualCamera.SetActive(true);
-            roomTitle.Display(roomName);
+            // roomTitle.gameObject.SetActive(true);
+            // roomTitle.Display(roomName);
         }
     }
 

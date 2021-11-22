@@ -1,17 +1,18 @@
+using Animancer;
 using UnityEngine;
 
 public sealed class IdleState : CharacterState
 {
-    [SerializeField] private AnimationClip _Animation;
+    [SerializeField]
+    private DirectionalAnimationSet animationSet;
 
-    private void OnEnable()
+    private void Update()
     {
-        Character.animancer.Play(_Animation, 0.25f);
+        character.animancer.Play(animationSet.GetClip(character.brain.facingDirection));
     }
 
     private void FixedUpdate()
     {
-        Character.body.velocity = default;
+        character.body.velocity = default;
     }
-
 }

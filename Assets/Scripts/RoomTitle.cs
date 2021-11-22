@@ -19,13 +19,12 @@ public class RoomTitle : MonoBehaviour
 
     IEnumerator DisplayCoroutine(string roomName)
     {
-        text.enabled = true;
         text.color = new Color(text.color.r, text.color.g, text.color.b, 1);
         text.text = roomName;
         yield return new WaitForSeconds(3f);
 
         yield return TextUtilities.FadeOut(text, 1f);
 
-        text.enabled = false;
+        gameObject.SetActive(false);
     }
 }

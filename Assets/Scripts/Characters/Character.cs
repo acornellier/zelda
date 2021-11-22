@@ -2,18 +2,30 @@ using Animancer;
 using Animancer.FSM;
 using UnityEngine;
 
-[AddComponentMenu(Strings.ExamplesMenuPrefix + "Characters - Character")]
 public sealed class Character : MonoBehaviour
 {
     public AnimancerComponent animancer;
     public CharacterState idle;
-    [System.NonSerialized] public Rigidbody2D body; public readonly StateMachine<CharacterState>.WithDefault StateMachine = new StateMachine<CharacterState>.WithDefault();
+    public CharacterBrain brain;
+    public Rigidbody2D body;
+
+    public StateMachine<CharacterState>.WithDefault stateMachine =
+        new StateMachine<CharacterState>.WithDefault();
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
-        StateMachine.DefaultState = idle;
+        stateMachine.DefaultState = idle;
     }
 
-    public void TrySetState(CharacterState state) => StateMachine.TrySetState(state);
+    public void TrySetState(CharacterState state) => stateMachine.TrySetState(state);
+
+#if UNITY_EDITOR
+    void Reset()
+    {
+        animancer = gameObject.GetComponentInParentOrChildren<AnimancerComponent>();
+        body = gameObject.GetComponentInParentOrChildren<Rigidbody2D>();
+        brain = gameObject.GetComponentInParentOrChildren<CharacterBrain>();
+        idle = gameObject.GetComponentInParentOrChildren<IdleState>();
+    }
+#endif
 }
