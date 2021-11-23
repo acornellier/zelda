@@ -7,8 +7,9 @@ public class ChaseState : CharacterState
     public float attackRadius;
     public Transform homePosition;
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         target = GameObject.FindWithTag("Player").transform;
     }
 

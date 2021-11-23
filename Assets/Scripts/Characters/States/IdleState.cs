@@ -6,12 +6,13 @@ public sealed class IdleState : CharacterState
     [SerializeField]
     private DirectionalAnimationSet animationSet;
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         character.animancer.Play(animationSet.GetClip(character.facingDirection));
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         character.body.velocity = default;
     }

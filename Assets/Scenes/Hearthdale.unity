@@ -1863,6 +1863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 225112871}
+  timeSinceEnabled: 0
   animationSet: {fileID: 11400000, guid: cabdb817f3a024440a3e178578ae9302, type: 2}
 --- !u!4 &225112875
 Transform:
@@ -1872,13 +1873,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 225112870}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 5.62, y: 4.76, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 624543711}
   - {fileID: 2135101224}
-  m_Father: {fileID: 278911139}
-  m_RootOrder: 3
+  m_Father: {fileID: 1972237492}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &225112876
 BoxCollider2D:
@@ -10999,7 +11000,7 @@ Transform:
   - {fileID: 288410412}
   - {fileID: 1370916925}
   - {fileID: 1752023194}
-  - {fileID: 225112875}
+  - {fileID: 1972237492}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20533,7 +20534,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.51, y: 3.48, z: -10}
+  m_LocalPosition: {x: -0.002481699, y: 19, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -24117,6 +24118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 225112871}
+  timeSinceEnabled: 0
   animationClip: {fileID: 7400000, guid: c8881531305bb4137a949b36f31a4251, type: 2}
 --- !u!114 &624543713
 MonoBehaviour:
@@ -24131,6 +24133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 225112871}
+  timeSinceEnabled: 0
   clip: {fileID: 7400000, guid: e7fa52b1b4f074f6a9bbedb4dd2c2437, type: 2}
 --- !u!114 &624543714
 MonoBehaviour:
@@ -24147,10 +24150,10 @@ MonoBehaviour:
   character: {fileID: 225112871}
   sleeping: {fileID: 624543713}
   waking: {fileID: 624543712}
-  chasing: {fileID: 624543715}
+  moving: {fileID: 624543715}
   wakeRadius: 2
   chaseRadius: 4
-  homePosition: {fileID: 624543711}
+  homePosition: {fileID: 1972237492}
   target: {fileID: 751954481}
 --- !u!114 &624543715
 MonoBehaviour:
@@ -24165,6 +24168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 225112871}
+  timeSinceEnabled: 0
   animationSet: {fileID: 11400000, guid: 580cc1aff1fd644ee892dbe1dcb70f5f, type: 2}
   walkSpeed: 1
 --- !u!1 &651895294
@@ -24228,6 +24232,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 751954477}
+  timeSinceEnabled: 0
   animationSet: {fileID: 11400000, guid: 1b09fd7bebc74474a8b2750dc65b3899, type: 2}
   walkSpeed: 4
 --- !u!114 &651895298
@@ -24243,6 +24248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 751954477}
+  timeSinceEnabled: 0
   animationSet: {fileID: 11400000, guid: 939cadf7c18eb45698d419a0572607ba, type: 2}
 --- !u!1 &695753320
 GameObject:
@@ -27830,6 +27836,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 751954477}
+  timeSinceEnabled: 0
   animationSet: {fileID: 11400000, guid: c64cfb3ae06ca43748cf3f967624e6c1, type: 2}
 --- !u!4 &751954481
 Transform:
@@ -29964,6 +29971,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894687336}
   m_CullTransparentMesh: 1
+--- !u!1 &1972237491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1972237492}
+  m_Layer: 0
+  m_Name: LogHome
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1972237492
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972237491}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 5.62, y: 4.76, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 225112875}
+  m_Father: {fileID: 278911139}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2025768221
 GameObject:
   m_ObjectHideFlags: 3

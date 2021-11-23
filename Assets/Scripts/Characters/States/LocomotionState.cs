@@ -5,12 +5,13 @@ public sealed class LocomotionState : CharacterState
     public DirectionalAnimationSet animationSet;
     public float walkSpeed;
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
         character.animancer.Play(animationSet.GetClip(character.MovementDirection));
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         character.body.velocity = character.MovementDirection.normalized * walkSpeed;
     }

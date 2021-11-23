@@ -1,22 +1,36 @@
 using Animancer;
 using Animancer.FSM;
 using CleverCrow.Fluid.BTs.Tasks;
+using UnityEngine;
 
 public abstract class CharacterState : StateBehaviour
 {
     public Character character;
     public StateMachine<CharacterState> OwnerStateMachine => character.stateMachine;
 
+    public float timeSinceEnabled;
+
+    protected virtual void OnEnable()
+    {
+        timeSinceEnabled = 0;
+    }
+
+    protected virtual void Update()
+    {
+        timeSinceEnabled += Time.deltaTime;
+    }
+
     public bool IsCurrentState() => OwnerStateMachine.CurrentState == this;
 
     public bool TryEnterState() => OwnerStateMachine.TrySetState(this);
-    public TaskStatus TryEnterAction() =>
-        OwnerStateMachine.TrySetState(this) ? TaskStatus.Success : TaskStatus.Failure;
+
+    public TaskStatus TryEnterAction() => TryEnterState() ? TaskStatus.Success : TaskStatus.Failure;
 
     public void ForceSetState() => OwnerStateMachine.ForceSetState(this);
+
     public TaskStatus ForceStateAction()
     {
-        OwnerStateMachine.ForceSetState(this);
+        ForceSetState();
         return TaskStatus.Success;
     }
 

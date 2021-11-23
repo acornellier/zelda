@@ -5,8 +5,9 @@ public sealed class AttackState : CharacterState
     public DirectionalAnimationSet animationSet;
     AnimancerState state;
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         state = character.animancer.Play(animationSet.GetClip(character.facingDirection));
     }
 

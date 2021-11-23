@@ -4,8 +4,9 @@ public sealed class LoopState : CharacterState
 {
     public AnimationClip clip;
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         character.animancer.Play(clip);
     }
 

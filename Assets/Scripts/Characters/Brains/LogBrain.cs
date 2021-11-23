@@ -7,7 +7,7 @@ public class LogBrain : CharacterBrain
 {
     public LoopState sleeping;
     public ClipState waking;
-    public LocomotionState chasing;
+    public LocomotionState moving;
 
     public float wakeRadius;
     public float chaseRadius;
@@ -28,17 +28,24 @@ public class LogBrain : CharacterBrain
             .Selector()
             .Sequence("Waking up")
                 .Condition("Sleeping", () => sleeping.IsCurrentState())
-                .Condition("Within wake radius", () => DistanceToTarget() < wakeRadius)
-                .Do("Wake up", () => waking.ForceStateAction())
+                .Do("Try wake up", TryWakeUp)
             .End()
             .Sequence("Chasing")
-                .Condition("Awake", () => !sleeping.IsCurrentState())
-                .Condition("Within chase radius", () => DistanceToTarget() < chaseRadius)
-                .Do("Chase target", ChaseTarget)
+                .Condition("Within chase radius", () => DistanceTo(target) < chaseRadius)
+                .Do("Go home", () => MoveTo(target))
+            .End()
+            .Sequence("Resetting")
+                .Condition(
+                    "Away from home",
+                    () => DistanceTo(target) > chaseRadius && DistanceTo(homePosition) > 0.01
+                )
+                .Do("Chase target", () => MoveTo(homePosition))
             .End()
             .Sequence("Falling asleep")
-                .Condition("Idle", () => character.idle.IsCurrentState())
-                .RandomChance(1, 1000)
+                .Condition(
+                    "Idle for long enough",
+                    () => character.idle.IsCurrentState() && character.idle.timeSinceEnabled > 2
+                )
                 .Do("Fall asleep", () => sleeping.TryEnterAction())
             .End()
             .Do(() => character.idle.TryEnterAction())
@@ -50,13 +57,16 @@ public class LogBrain : CharacterBrain
         tree.Tick();
     }
 
-    float DistanceToTarget() =>
-        Vector2.Distance(character.transform.position, target.transform.position);
+    TaskStatus TryWakeUp() =>
+        DistanceTo(target) < wakeRadius ? waking.ForceStateAction() : TaskStatus.Continue;
 
-    TaskStatus ChaseTarget()
+    float DistanceTo(Transform destination) =>
+        Vector2.Distance(character.transform.position, destination.transform.position);
+
+    TaskStatus MoveTo(Transform destination)
     {
-        character.MovementDirection = target.transform.position - character.transform.position;
-        return chasing.TryEnterAction();
+        character.MovementDirection = destination.transform.position - character.transform.position;
+        return moving.TryEnterAction();
     }
 
 #if UNITY_EDITOR
@@ -64,7 +74,7 @@ public class LogBrain : CharacterBrain
     {
         base.OnValidate();
         gameObject.GetComponentInParentOrChildren(ref sleeping);
-        gameObject.GetComponentInParentOrChildren(ref chasing);
+        gameObject.GetComponentInParentOrChildren(ref moving);
     }
 #endif
 }

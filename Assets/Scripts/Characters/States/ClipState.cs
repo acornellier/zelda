@@ -6,8 +6,9 @@ public sealed class ClipState : CharacterState
     public AnimationClip animationClip;
     AnimancerState state;
 
-    void OnEnable()
+    protected override void OnEnable()
     {
+        base.OnEnable();
         state = character.animancer.Play(animationClip);
     }
 
