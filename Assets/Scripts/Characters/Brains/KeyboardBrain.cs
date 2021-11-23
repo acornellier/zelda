@@ -1,4 +1,3 @@
-using Animancer.FSM;
 using UnityEngine;
 
 public sealed class KeyboardBrain : CharacterBrain

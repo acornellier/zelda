@@ -17,7 +17,8 @@ public sealed class Character : MonoBehaviour
         set
         {
             movementDirection = value.normalized;
-            facingDirection = movementDirection;
+            if (movementDirection != default)
+                facingDirection = movementDirection;
         }
     }
 
