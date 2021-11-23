@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 
 public class Knockback : MonoBehaviour
@@ -10,18 +9,12 @@ public class Knockback : MonoBehaviour
     {
         if (other.CompareTag("Enemy"))
         {
-            StartCoroutine(KnockCo(other.GetComponent<Rigidbody2D>()));
+            var otherCharacter = other.GetComponent<Character>();
+            if (otherCharacter == null)
+                return;
+
+            var hit = new Hit() { source = transform, knockTime = knockTime, thrust = thrust };
+            otherCharacter.ReceiveHit(hit);
         }
-    }
-
-    IEnumerator KnockCo(Rigidbody2D enemy)
-    {
-        var forceDirection = enemy.transform.position - transform.position;
-        var force = forceDirection.normalized * thrust;
-
-        enemy.velocity = force;
-        yield return new WaitForSeconds(knockTime);
-
-        enemy.velocity = Vector2.zero;
     }
 }

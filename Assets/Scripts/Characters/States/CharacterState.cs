@@ -8,6 +8,7 @@ public abstract class CharacterState : StateBehaviour
     public Character character;
     public StateMachine<CharacterState> OwnerStateMachine => character.stateMachine;
 
+    [HideInInspector]
     public float timeSinceEnabled;
 
     protected virtual void OnEnable()

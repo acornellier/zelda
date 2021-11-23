@@ -1,5 +1,6 @@
 using Animancer;
 using Animancer.FSM;
+using System;
 using UnityEngine;
 
 public sealed class Character : MonoBehaviour
@@ -22,6 +23,8 @@ public sealed class Character : MonoBehaviour
         }
     }
 
+    public event Action<Hit> OnHitReceived;
+
     public StateMachine<CharacterState>.WithDefault stateMachine =
         new StateMachine<CharacterState>.WithDefault();
     [SerializeField]
@@ -38,6 +41,11 @@ public sealed class Character : MonoBehaviour
     }
 
     public void TrySetState(CharacterState state) => stateMachine.TrySetState(state);
+
+    public void ReceiveHit(Hit hit)
+    {
+        OnHitReceived?.Invoke(hit);
+    }
 
 #if UNITY_EDITOR
     void OnValidate()

@@ -30,7 +30,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.46666667
+        time: 0.48333332
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -42,7 +42,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: up hit box
+    path: Melee Hitboxes/Up
     classID: 1
     script: {fileID: 0}
   m_PPtrCurves:
@@ -69,7 +69,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 907387680
+      path: 2845878060
       attribute: 2086281974
       script: {fileID: 0}
       typeID: 1
@@ -93,7 +93,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.48333332
+    m_StopTime: 0.48333335
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -122,7 +122,7 @@ AnimationClip:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
-        time: 0.46666667
+        time: 0.48333332
         value: 0
         inSlope: Infinity
         outSlope: Infinity
@@ -134,7 +134,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_IsActive
-    path: up hit box
+    path: Melee Hitboxes/Up
     classID: 1
     script: {fileID: 0}
   m_EulerEditorCurves: []

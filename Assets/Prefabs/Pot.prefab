@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5214784100184751528}
   - component: {fileID: 5214784100184751534}
   - component: {fileID: 5214784100184751533}
+  - component: {fileID: 329354398}
   m_Layer: 0
   m_Name: Pot
   m_TagString: Breakable
@@ -27,7 +28,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5214784100184751530}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 6.59, y: 3.14, z: 0.7435463}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -121,7 +122,7 @@ Animator:
   m_GameObject: {fileID: 5214784100184751530}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e25cd2149dd294bc58d355e7cf2ca12c, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -142,3 +143,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 010c80e19b0f84ab89535c3f060b8760, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 7400000, guid: e25cddae78c5a4881bef9dee3b681b5f, type: 2}
+--- !u!114 &329354398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5214784100184751530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad50f81b1d25c441943c37a89ba23f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _Animator: {fileID: 5214784100184751534}
+  _ActionOnDisable: 0

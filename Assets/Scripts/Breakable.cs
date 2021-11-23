@@ -1,16 +1,21 @@
+using Animancer;
 using UnityEngine;
 
 public class Breakable : MonoBehaviour
 {
-    Animator animator;
-
-    void Awake()
-    {
-        animator = GetComponent<Animator>();
-    }
+    public AnimationClip clip;
+    AnimancerComponent animancer;
 
     public void Break()
     {
-        animator.SetTrigger("break");
+        var state = animancer.Play(clip);
+        state.Events.OnEnd = () => Destroy(gameObject);
     }
+
+#if UNITY_EDITOR
+    void OnValidate()
+    {
+        gameObject.GetComponentInParentOrChildren(ref animancer);
+    }
+#endif
 }
