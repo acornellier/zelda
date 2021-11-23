@@ -3,7 +3,7 @@ omnisharp.json
 Assembly-CSharp.csproj
 *.sln
 /NuGet/
-# /Assets/Plugins
+/Assets/Plugins
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #

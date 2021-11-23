@@ -9,22 +9,41 @@ public sealed class Character : MonoBehaviour
     public CharacterBrain brain;
     public Rigidbody2D body;
 
+    public Vector2 facingDirection = Vector2.down;
+    private Vector2 movementDirection;
+    public Vector2 MovementDirection
+    {
+        get => movementDirection;
+        set
+        {
+            movementDirection = value.normalized;
+            facingDirection = movementDirection;
+        }
+    }
+
     public StateMachine<CharacterState>.WithDefault stateMachine =
         new StateMachine<CharacterState>.WithDefault();
+    [SerializeField]
+    private CharacterState CurrentState;
 
-    private void Awake()
+    void Awake()
     {
         stateMachine.DefaultState = idle;
+    }
+
+    void Update()
+    {
+        CurrentState = stateMachine.CurrentState;
     }
 
     public void TrySetState(CharacterState state) => stateMachine.TrySetState(state);
 
 #if UNITY_EDITOR
-    void Reset()
+    void OnValidate()
     {
-        animancer = gameObject.GetComponentInParentOrChildren<AnimancerComponent>();
-        body = gameObject.GetComponentInParentOrChildren<Rigidbody2D>();
-        brain = gameObject.GetComponentInParentOrChildren<CharacterBrain>();
+        gameObject.GetComponentInParentOrChildren(ref animancer);
+        gameObject.GetComponentInParentOrChildren(ref body);
+        gameObject.GetComponentInParentOrChildren(ref brain);
         idle = gameObject.GetComponentInParentOrChildren<IdleState>();
     }
 #endif

@@ -1,13 +1,14 @@
 using Animancer;
+using UnityEngine;
 
-public sealed class AttackState : CharacterState
+public sealed class ClipState : CharacterState
 {
-    public DirectionalAnimationSet animationSet;
+    public AnimationClip animationClip;
     AnimancerState state;
 
     void OnEnable()
     {
-        state = character.animancer.Play(animationSet.GetClip(character.facingDirection));
+        state = character.animancer.Play(animationClip);
     }
 
     void FixedUpdate()

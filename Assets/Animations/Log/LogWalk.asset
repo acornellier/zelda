@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eceeb59a892d074db28203df8e4cd3a, type: 3}
-  m_Name: PlayerAttack
+  m_Name: LogWalk
   m_EditorClassIdentifier: 
-  _Up: {fileID: 7400000, guid: 850713cb10efc4027a32ab6c3bccd432, type: 2}
-  _Right: {fileID: 7400000, guid: fc5ed7f50fb994eb0879eca661c555b1, type: 2}
-  _Down: {fileID: 7400000, guid: a974249f4a2a74d7d8bc8805feba66e7, type: 2}
-  _Left: {fileID: 7400000, guid: 07b57dfa9fe88443b8865d5fb779e629, type: 2}
+  _Up: {fileID: 7400000, guid: b6f8fd19f69114ddbaf6c5fdc2484e67, type: 2}
+  _Right: {fileID: 7400000, guid: 0b4901df44f474c0cad1f4bf89c3a5ca, type: 2}
+  _Down: {fileID: 7400000, guid: bf1c81440b6944902ae97ba7e5f963d1, type: 2}
+  _Left: {fileID: 7400000, guid: 9219e0219e50f48bea72f66c087f9016, type: 2}

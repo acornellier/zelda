@@ -8,7 +8,7 @@ public sealed class IdleState : CharacterState
 
     private void Update()
     {
-        character.animancer.Play(animationSet.GetClip(character.brain.facingDirection));
+        character.animancer.Play(animationSet.GetClip(character.facingDirection));
     }
 
     private void FixedUpdate()

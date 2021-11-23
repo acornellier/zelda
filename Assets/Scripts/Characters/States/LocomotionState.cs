@@ -7,11 +7,11 @@ public sealed class LocomotionState : CharacterState
 
     private void Update()
     {
-        character.animancer.Play(animationSet.GetClip(character.brain.movementDirection));
+        character.animancer.Play(animationSet.GetClip(character.MovementDirection));
     }
 
     private void FixedUpdate()
     {
-        character.body.velocity = character.brain.movementDirection * walkSpeed;
+        character.body.velocity = character.MovementDirection.normalized * walkSpeed;
     }
 }

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6eceeb59a892d074db28203df8e4cd3a, type: 3}
-  m_Name: PlayerAttack
+  m_Name: LogIdle
   m_EditorClassIdentifier: 
-  _Up: {fileID: 7400000, guid: 850713cb10efc4027a32ab6c3bccd432, type: 2}
-  _Right: {fileID: 7400000, guid: fc5ed7f50fb994eb0879eca661c555b1, type: 2}
-  _Down: {fileID: 7400000, guid: a974249f4a2a74d7d8bc8805feba66e7, type: 2}
-  _Left: {fileID: 7400000, guid: 07b57dfa9fe88443b8865d5fb779e629, type: 2}
+  _Up: {fileID: 7400000, guid: a5a420fbfb4b240e5a882f9120eaa31d, type: 2}
+  _Right: {fileID: 7400000, guid: ac4bb22d3021d43b7b82e4f075035b90, type: 2}
+  _Down: {fileID: 7400000, guid: d5208c559e9cb43efa7e67605a9480b3, type: 2}
+  _Left: {fileID: 7400000, guid: ef7bae4a2a81f464b8a6c4866e302654, type: 2}
