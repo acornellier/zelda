@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public sealed class KeyboardBrain : CharacterBrain
+public sealed class PlayerBrain : CharacterBrain
 {
     public CharacterState locomotion;
     public CharacterState attack;
@@ -14,13 +14,12 @@ public sealed class KeyboardBrain : CharacterBrain
         }
         else if (input != default)
         {
-            character.facingDirection = input;
             character.MovementDirection = input.normalized;
             locomotion.TryEnterState();
         }
         else
         {
-            character.MovementDirection = default;
+            // character.MovementDirection = default;
             character.idle.TryEnterState();
         }
     }
