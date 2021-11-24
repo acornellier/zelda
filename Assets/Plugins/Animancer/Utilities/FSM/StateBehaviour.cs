@@ -9,7 +9,7 @@ namespace Animancer.FSM
     /// Documentation: <see href="https://kybernetik.com.au/animancer/docs/manual/fsm/state-types">State Types</see>
     /// </remarks>
     /// https://kybernetik.com.au/animancer/api/Animancer.FSM/StateBehaviour
-    /// 
+    ///
     [HelpURL(StateExtensions.APIDocumentationURL + nameof(StateBehaviour))]
     public abstract class StateBehaviour : MonoBehaviour, IState
     {

@@ -5,6 +5,13 @@ using UnityEngine;
 
 public abstract class CharacterState : StateBehaviour
 {
+    [SerializeField]
+    private string _name;
+    public string Name
+    {
+        get => string.IsNullOrEmpty(_name) ? name : _name;
+    }
+
     public Character character;
     public StateMachine<CharacterState> OwnerStateMachine => character.stateMachine;
 

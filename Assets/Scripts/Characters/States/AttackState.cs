@@ -8,7 +8,7 @@ public sealed class AttackState : CharacterState
     protected override void OnEnable()
     {
         base.OnEnable();
-        state = character.animancer.Play(animationSet.GetClip(character.facingDirection));
+        state = character.animancer.Play(animationSet.GetClip(character.FacingDirection));
     }
 
     void FixedUpdate()

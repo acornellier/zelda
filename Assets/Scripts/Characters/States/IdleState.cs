@@ -9,7 +9,7 @@ public sealed class IdleState : CharacterState
     protected override void Update()
     {
         base.Update();
-        character.animancer.Play(animationSet.GetClip(character.facingDirection));
+        character.animancer.Play(animationSet.GetClip(character.FacingDirection));
     }
 
     void FixedUpdate()

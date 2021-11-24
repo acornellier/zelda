@@ -8,7 +8,13 @@ public sealed class PlayerBrain : CharacterBrain
     void Update()
     {
         var input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        if (Input.GetButtonDown("attack"))
+
+        if (Input.GetButtonDown("Heal"))
+        {
+            character.Health += 1;
+        }
+
+        if (Input.GetButtonDown("Attack"))
         {
             attack.TryEnterState();
         }
@@ -19,7 +25,6 @@ public sealed class PlayerBrain : CharacterBrain
         }
         else
         {
-            // character.MovementDirection = default;
             character.idle.TryEnterState();
         }
     }

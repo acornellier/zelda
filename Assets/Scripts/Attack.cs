@@ -1,9 +1,8 @@
 using UnityEngine;
 
-public class Knockback : MonoBehaviour
+public class Attack : MonoBehaviour
 {
-    public float thrust;
-    public float knockTime;
+    public HitData hitData;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -11,13 +10,13 @@ public class Knockback : MonoBehaviour
         {
             other.GetComponent<Breakable>().Break();
         }
-        else if (other.CompareTag("Enemy") || other.CompareTag("Player"))
+        else if (other.isTrigger)
         {
             var otherCharacter = other.GetComponent<Character>();
             if (otherCharacter == null)
                 return;
 
-            var hit = new Hit() { source = transform, knockTime = knockTime, thrust = thrust };
+            var hit = new Hit() { source = transform, data = hitData };
             otherCharacter.ReceiveHit(hit);
         }
     }
