@@ -19,7 +19,6 @@ public class LogBrain : CharacterBrain
 
     void Awake()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
         sleeping.TryEnterState();
         tree = new BehaviorTreeBuilder(gameObject)
             .Selector()
@@ -47,6 +46,11 @@ public class LogBrain : CharacterBrain
             .End()
             .Do(() => character.idle.TryEnterAction())
             .Build();
+    }
+
+    void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     void Update()

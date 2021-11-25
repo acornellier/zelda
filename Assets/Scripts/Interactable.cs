@@ -1,11 +1,8 @@
 using UnityEngine;
-using TMPro;
 
 public class Interactable : MonoBehaviour
 {
     public string dialog;
-    public GameObject dialogBox;
-    public TextMeshProUGUI dialogText;
 
     bool playerInRange;
 
@@ -13,15 +10,7 @@ public class Interactable : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && playerInRange)
         {
-            if (dialogBox.activeInHierarchy)
-            {
-                dialogBox.SetActive(false);
-            }
-            else
-            {
-                dialogBox.SetActive(true);
-                dialogText.text = dialog;
-            }
+            DialogController.Instance.ToggleText(dialog);
         }
     }
 
@@ -38,7 +27,7 @@ public class Interactable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = false;
-            dialogBox.SetActive(false);
+            DialogController.Instance.Hide();
         }
     }
 }

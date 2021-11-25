@@ -11005,7 +11005,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 1370916924}
   roomName: Hearthdale
-  roomTitle: {fileID: 0}
 --- !u!1 &286634378
 GameObject:
   m_ObjectHideFlags: 0
@@ -20169,7 +20168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   virtualCamera: {fileID: 526976315}
   roomName: Hearthdale Pond
-  roomTitle: {fileID: 0}
 --- !u!4 &366534667 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5214784100184751529, guid: 69cb1a5d02ea64c8d8698fced69d3208, type: 3}
@@ -24021,7 +24019,6 @@ MonoBehaviour:
   wakeRadius: 2
   chaseRadius: 4
   homePosition: {fileID: 1972237492}
-  target: {fileID: 225112875}
 --- !u!114 &624543715
 MonoBehaviour:
   m_ObjectHideFlags: 0

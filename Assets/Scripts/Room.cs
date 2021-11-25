@@ -4,7 +4,6 @@ public class Room : MonoBehaviour
 {
     public GameObject virtualCamera;
     public string roomName;
-    public RoomTitle roomTitle;
 
     void Start()
     {
@@ -16,8 +15,6 @@ public class Room : MonoBehaviour
         if (other.CompareTag("Player") && !other.isTrigger)
         {
             virtualCamera.SetActive(true);
-            // roomTitle.gameObject.SetActive(true);
-            // roomTitle.Display(roomName);
         }
     }
 

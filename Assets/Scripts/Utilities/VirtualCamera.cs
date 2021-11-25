@@ -14,7 +14,9 @@ public class VirtualCamera : MonoBehaviour
     {
         if (!vcam.Follow)
         {
-            vcam.Follow = GameObject.FindGameObjectWithTag("Player").transform;
+            var target = GameObject.FindGameObjectWithTag("Player").transform;
+            vcam.transform.position = target.position;
+            vcam.Follow = target;
         }
     }
 }

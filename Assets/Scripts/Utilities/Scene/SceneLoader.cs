@@ -1,3 +1,4 @@
+using Animancer;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,12 +18,13 @@ public class SceneLoader : MonoBehaviour
             if (instance != null)
                 return instance;
 
-            var gameObject = new GameObject("SceneLoader");
-            instance = gameObject.AddComponent<SceneLoader>();
-
-            return instance;
+            throw new System.Exception("SceneLoader not found");
         }
     }
+
+    public AnimationClip crossfadeStart;
+    public AnimationClip crossfadeEnd;
+    public AnimancerComponent animancer;
 
     void Awake()
     {
@@ -31,7 +33,7 @@ public class SceneLoader : MonoBehaviour
 
     public static void LoadScene(string sceneToLoad, SpawnDestinationTag destinationTag)
     {
-        Instance.StartCoroutine(Instance.LoadSceneAdditive(sceneToLoad, destinationTag));
+        Instance.StartCoroutine(Instance.LoadSceneCo(sceneToLoad, destinationTag));
     }
 
     public static void SetPlayerPosition(SpawnDestinationTag destinationTag)
@@ -47,12 +49,13 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    IEnumerator LoadSceneAdditive(string sceneToLoad, SpawnDestinationTag destinationTag)
+    IEnumerator LoadSceneCo(string sceneToLoad, SpawnDestinationTag destinationTag)
     {
         var activeScene = SceneManager.GetActiveScene();
         var loadOperation = SceneManager.LoadSceneAsync(sceneToLoad, LoadSceneMode.Additive);
-
         loadOperation.allowSceneActivation = false;
+
+        animancer.Play(crossfadeStart);
 
         while (loadOperation.progress < 0.9f)
             yield return null;
@@ -65,5 +68,13 @@ public class SceneLoader : MonoBehaviour
 
         SceneManager.SetActiveScene(SceneManager.GetSceneByName(sceneToLoad));
         SetPlayerPosition(destinationTag);
+        animancer.Play(crossfadeEnd);
     }
+
+#if UNITY_EDITOR
+    void OnValidate()
+    {
+        gameObject.GetComponentInParentOrChildren(ref animancer);
+    }
+#endif
 }
