@@ -53,7 +53,7 @@ public sealed class Character : MonoBehaviour
     public StateMachine<CharacterState>.WithDefault stateMachine =
         new StateMachine<CharacterState>.WithDefault();
 
-    [SerializeField, ShowOnly]
+    // [SerializeField, ShowOnly]
     string currentState = null;
 
     void Awake()

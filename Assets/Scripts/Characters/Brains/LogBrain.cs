@@ -12,17 +12,14 @@ public class LogBrain : CharacterBrain
     public float wakeRadius;
     public float chaseRadius;
     public Transform homePosition;
-    public Transform target;
 
     public BehaviorTree tree;
 
+    Transform target;
+
     void Awake()
     {
-        OnEnable();
-    }
-
-    void OnEnable()
-    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         sleeping.TryEnterState();
         tree = new BehaviorTreeBuilder(gameObject)
             .Selector()
