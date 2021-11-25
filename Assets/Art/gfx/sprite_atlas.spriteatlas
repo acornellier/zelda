@@ -38,8 +38,8 @@ SpriteAtlas:
       padding: 4
       blockOffset: 1
       allowAlphaSplitting: 0
-      enableRotation: 1
-      enableTightPacking: 1
+      enableRotation: 0
+      enableTightPacking: 0
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
@@ -111,6 +111,15 @@ SpriteAtlas:
   - {fileID: -389262940572705114, guid: abcce3c0fbc584ebabeb5da3569eb40d, type: 3}
   - {fileID: 5775892167768770587, guid: abcce3c0fbc584ebabeb5da3569eb40d, type: 3}
   - {fileID: 7274838496166343488, guid: abcce3c0fbc584ebabeb5da3569eb40d, type: 3}
+  - {fileID: -405539212965888768, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
+  - {fileID: -7176917580659845818, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
+  - {fileID: -5703411853449480706, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
+  - {fileID: -3215313362485883606, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
+  - {fileID: -2554822408315757945, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
+  - {fileID: -4484386481748707659, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
+  - {fileID: -8360621857648827146, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
+  - {fileID: -105911007907788231, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
+  - {fileID: -5043888605235722714, guid: d718b94294f104322bc61fd3b4ee7f2a, type: 3}
   - {fileID: 3059174765694063163, guid: 7585d0e2520234262b1a011ed2444347, type: 3}
   - {fileID: -34017176892466219, guid: 7585d0e2520234262b1a011ed2444347, type: 3}
   - {fileID: 2376815873980901129, guid: 7585d0e2520234262b1a011ed2444347, type: 3}
@@ -1340,14 +1349,6 @@ SpriteAtlas:
   - {fileID: 538826285080647454, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
   - {fileID: 1107736971085435061, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
   - {fileID: -377563455374678323, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
-  - {fileID: 4040709796975223985, guid: e59b7a6d0a56048f4aa7876d98d40384, type: 3}
-  - {fileID: -8406283783531612455, guid: e59b7a6d0a56048f4aa7876d98d40384, type: 3}
-  - {fileID: -536671553445946595, guid: e59b7a6d0a56048f4aa7876d98d40384, type: 3}
-  - {fileID: 8821616558950248791, guid: e59b7a6d0a56048f4aa7876d98d40384, type: 3}
-  - {fileID: -4327358277843303066, guid: e59b7a6d0a56048f4aa7876d98d40384, type: 3}
-  - {fileID: -6869722296774113308, guid: e59b7a6d0a56048f4aa7876d98d40384, type: 3}
-  - {fileID: 1778262320642931512, guid: e59b7a6d0a56048f4aa7876d98d40384, type: 3}
-  - {fileID: 8487953935366798386, guid: e59b7a6d0a56048f4aa7876d98d40384, type: 3}
   m_PackedSpriteNamesToIndex:
   - NPC_test
   - character_14
@@ -1411,6 +1412,15 @@ SpriteAtlas:
   - character_44
   - character_72
   - character_70
+  - char_6
+  - char_7
+  - char_4
+  - char_5
+  - char_2
+  - char_3
+  - char_0
+  - char_1
+  - char_8
   - log_8
   - log_9
   - log_2
@@ -2640,14 +2650,6 @@ SpriteAtlas:
   - objects_119
   - objects_109
   - objects_108
-  - character2_3
-  - character2_2
-  - character2_1
-  - character2_0
-  - character2_7
-  - character2_6
-  - character2_5
-  - character2_4
   m_RenderDataMap: {}
   m_Tag: sprite_atlas
   m_IsVariant: 0

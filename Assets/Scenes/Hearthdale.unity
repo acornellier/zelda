@@ -1833,7 +1833,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbbc28e0f29d54312a1b209ed0354757, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 0
   health: 0
   animancer: {fileID: 2135101225}
   idle: {fileID: 225112873}
@@ -1958,7 +1958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitData:
-    damage: 0.5
+    damage: 0.25
     thrust: 2
     staggerTime: 0.2
 --- !u!1 &266543507
@@ -24258,6 +24258,7 @@ GameObject:
   - component: {fileID: 651895297}
   - component: {fileID: 651895298}
   - component: {fileID: 651895299}
+  - component: {fileID: 651895300}
   m_Layer: 0
   m_Name: Brain
   m_TagString: Untagged
@@ -24294,6 +24295,7 @@ MonoBehaviour:
   character: {fileID: 751954477}
   locomotion: {fileID: 651895297}
   attack: {fileID: 651895298}
+  drinkPotion: {fileID: 651895300}
 --- !u!114 &651895297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24343,6 +24345,22 @@ MonoBehaviour:
   character: {fileID: 751954477}
   timeSinceEnabled: 0
   dieAnimation: {fileID: 0}
+--- !u!114 &651895300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651895294}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0fb715a789d7844bfa98d4667c46b4c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _name: Drink Potion
+  character: {fileID: 751954477}
+  timeSinceEnabled: 0
+  animationClip: {fileID: 7400000, guid: 220c2d679b0fd4a35be10d3aa352555a, type: 2}
 --- !u!1 &695753320
 GameObject:
   m_ObjectHideFlags: 0
@@ -28067,8 +28085,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 907250673}
+  - component: {fileID: 907250674}
+  - component: {fileID: 907250675}
   m_Layer: 5
-  m_Name: HeartContainers
+  m_Name: HeartContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28090,9 +28110,53 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 96.9391, y: 24.22}
+  m_SizeDelta: {x: 216.0276, y: 48.439}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &907250674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907250672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 3
+  m_Spacing: 4
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &907250675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907250672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38c3dea95642647b19d2df9204423559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heartObject: {fileID: 6264401792210367249, guid: 098ae7658158140d48067a9f1ba17b10, type: 3}
+  fullHeart: {fileID: -4430392651179603617, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
+  threeQuarterHeart: {fileID: 2654447934904345190, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
+  halfHeart: {fileID: -3276687688264177478, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
+  quarterHeart: {fileID: 5069650035751226587, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
+  emptyHeart: {fileID: -9053378900703536071, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
 --- !u!1 &935679356
 GameObject:
   m_ObjectHideFlags: 0
@@ -29755,7 +29819,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 19.591, y: -19}
+  m_AnchoredPosition: {x: 19, y: -19}
   m_SizeDelta: {x: 181.786, y: 123.5213}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1601987591
@@ -29780,7 +29844,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: -3855957774892257989, guid: cc94565d9ca00495baa9ad8a87785343, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -29854,7 +29918,7 @@ Animator:
   m_GameObject: {fileID: 1619892701}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9f59b61a907974d138adbf727769bbba, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
