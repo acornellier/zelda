@@ -12,6 +12,9 @@ public class Attack : MonoBehaviour
         }
         else if (other.isTrigger)
         {
+            if (gameObject.CompareTag("Enemy") && other.gameObject.CompareTag("Enemy"))
+                return;
+
             var otherCharacter = other.GetComponent<Character>();
             if (otherCharacter == null)
                 return;

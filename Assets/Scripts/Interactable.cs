@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
     public string dialog;
+
+    static public event Action<bool> OnInteractableRange;
 
     bool playerInRange;
 
@@ -19,6 +22,7 @@ public class Interactable : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             playerInRange = true;
+            OnInteractableRange?.Invoke(true);
         }
     }
 
@@ -28,6 +32,7 @@ public class Interactable : MonoBehaviour
         {
             playerInRange = false;
             DialogController.Instance.Hide();
+            OnInteractableRange?.Invoke(false);
         }
     }
 }
