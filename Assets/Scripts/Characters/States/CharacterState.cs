@@ -34,11 +34,11 @@ public abstract class CharacterState : StateBehaviour
 
     public TaskStatus TryEnterAction() => TryEnterState() ? TaskStatus.Success : TaskStatus.Failure;
 
-    public void ForceSetState() => OwnerStateMachine.ForceSetState(this);
+    public void ForceState() => OwnerStateMachine.ForceSetState(this);
 
     public TaskStatus ForceStateAction()
     {
-        ForceSetState();
+        ForceState();
         return TaskStatus.Success;
     }
 

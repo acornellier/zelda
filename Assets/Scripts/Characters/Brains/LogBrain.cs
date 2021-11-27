@@ -17,9 +17,14 @@ public class LogBrain : CharacterBrain
 
     Transform target;
 
-    void Awake()
+    void OnEnable()
     {
+        CreateTree();
         sleeping.TryEnterState();
+    }
+
+    void CreateTree()
+    {
         tree = new BehaviorTreeBuilder(gameObject)
             .Selector()
             .Sequence("Waking up")

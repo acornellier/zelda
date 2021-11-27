@@ -27,6 +27,8 @@ public sealed class Character : MonoBehaviour
         }
     }
 
+    public Inventory inventory;
+
     public AnimancerComponent animancer;
     public CharacterState idle;
     public CharacterBrain brain;
@@ -50,17 +52,20 @@ public sealed class Character : MonoBehaviour
     public event Action<float, float> OnHealthChanged;
     public event Action<Hit> OnHitReceived;
 
-    public StateMachine<CharacterState>.WithDefault stateMachine =
-        new StateMachine<CharacterState>.WithDefault();
+    public StateMachine<CharacterState>.WithDefault stateMachine;
 
-    // [SerializeField, ShowOnly]
+    [SerializeField]
     string currentState = null;
 
     void Awake()
     {
-        stateMachine.DefaultState = idle;
-        stateMachine.SetAllowNullStates(true);
         health = maxHealth;
+    }
+
+    void OnEnable()
+    {
+        stateMachine = new StateMachine<CharacterState>.WithDefault { DefaultState = idle };
+        stateMachine.SetAllowNullStates(true);
     }
 
     void Update()

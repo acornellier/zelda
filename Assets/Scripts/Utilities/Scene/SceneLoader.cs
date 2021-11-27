@@ -3,25 +3,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SceneLoader : MonoBehaviour
+public class SceneLoader : Singleton<SceneLoader>
 {
-    protected static SceneLoader instance;
-    public static SceneLoader Instance
-    {
-        get
-        {
-            if (instance != null)
-                return instance;
-
-            instance = FindObjectOfType<SceneLoader>();
-
-            if (instance != null)
-                return instance;
-
-            throw new System.Exception("SceneLoader not found");
-        }
-    }
-
     public AnimationClip crossfadeStart;
     public AnimationClip crossfadeEnd;
     public AnimancerComponent animancer;

@@ -11,7 +11,7 @@ public sealed class StaggerState : CharacterState
         character.OnHealthChanged += (oldHealth, newHealth) =>
         {
             if (newHealth < oldHealth)
-                ForceSetState();
+                ForceState();
         };
 
         character.OnHitReceived += (hit) =>
@@ -19,7 +19,7 @@ public sealed class StaggerState : CharacterState
             if (hit.data.damage > 0)
             {
                 this.hit = hit;
-                ForceSetState();
+                ForceState();
             }
         };
     }
