@@ -3,54 +3,17 @@ using CleverCrow.Fluid.BTs.Tasks;
 using CleverCrow.Fluid.BTs.Trees;
 using UnityEngine;
 
-public class LogBrain : CharacterBrain
+public abstract class LogBrain : CharacterBrain
 {
-    public LoopState sleeping;
-    public ClipState waking;
     public LocomotionState moving;
-
-    public float wakeRadius;
     public float chaseRadius;
-    public Transform homePosition;
-
     public BehaviorTree tree;
 
-    Transform target;
+    protected Transform target;
 
-    void OnEnable()
+    virtual protected void OnEnable()
     {
         CreateTree();
-        sleeping.TryEnterState();
-    }
-
-    void CreateTree()
-    {
-        tree = new BehaviorTreeBuilder(gameObject)
-            .Selector()
-            .Sequence("Waking up")
-                .Condition("Sleeping", () => sleeping.IsCurrentState())
-                .Do("Try wake up", TryWakeUp)
-            .End()
-            .Sequence("Chasing")
-                .Condition("Within chase radius", () => DistanceTo(target) < chaseRadius)
-                .Do("Go home", () => MoveTo(target))
-            .End()
-            .Sequence("Resetting")
-                .Condition(
-                    "Away from home",
-                    () => DistanceTo(target) > chaseRadius && DistanceTo(homePosition) > 0.01
-                )
-                .Do("Chase target", () => MoveTo(homePosition))
-            .End()
-            .Sequence("Falling asleep")
-                .Condition(
-                    "Idle for long enough",
-                    () => character.idle.IsCurrentState() && character.idle.timeSinceEnabled > 2
-                )
-                .Do("Fall asleep", () => sleeping.TryEnterAction())
-            .End()
-            .Do(() => character.idle.TryEnterAction())
-            .Build();
     }
 
     void Start()
@@ -58,28 +21,35 @@ public class LogBrain : CharacterBrain
         target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void Update()
+    virtual protected void Update() => tree.Tick();
+
+    abstract protected void CreateTree();
+
+    protected BehaviorTree BuildChaseNode()
     {
-        tree.Tick();
+        return new BehaviorTreeBuilder(gameObject)
+            .Sequence("Chasing")
+                .Condition("Within chase radius", () => DistanceTo(target) < chaseRadius)
+                .Do("Chase target", () => MoveTo(target))
+            .End()
+            .Build();
     }
 
-    TaskStatus TryWakeUp() =>
-        DistanceTo(target) < wakeRadius ? waking.ForceStateAction() : TaskStatus.Continue;
+    protected float DistanceTo(Transform destination)
+    {
+        return Vector2.Distance(character.transform.position, destination.transform.position);
+    }
 
-    float DistanceTo(Transform destination) =>
-        Vector2.Distance(character.transform.position, destination.transform.position);
-
-    TaskStatus MoveTo(Transform destination)
+    protected TaskStatus MoveTo(Transform destination)
     {
         character.MovementDirection = destination.transform.position - character.transform.position;
         return moving.TryEnterAction();
     }
 
 #if UNITY_EDITOR
-    protected override void OnValidate()
+    override protected void OnValidate()
     {
         base.OnValidate();
-        gameObject.GetComponentInParentOrChildren(ref sleeping);
         gameObject.GetComponentInParentOrChildren(ref moving);
     }
 #endif
